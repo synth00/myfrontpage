@@ -1,0 +1,53 @@
+body {
+    font-family: Noto Sans;
+    background-color: #b3b4bd;
+    color: #141619;
+}
+
+p {
+    font-family: monospace;
+}
+
+a {
+    font-family: Noto Sans;
+    color: #050A44;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.headline {
+    font-family: Terminus;
+    font-size: 30px;
+}
+
+.news {
+    font-family: Noto Sans;
+    color: #0A21C0;
+    font-size: 18px;
+    text-align: left;
+    text-indent: 25px;
+}
+
+.temp {
+    font-family: Noto Sans;
+    color: #0A21C0;
+    font-size: 40px;
+    text-align: center;
+
+}
+
+tr {
+    height: 5px;
+
+}
+
+table {
+    border-spacing: 1px;
+    padding: 0px;
+    table-layout: fixed;
+    width: 100%;
+    table-layout: fixed;
+}

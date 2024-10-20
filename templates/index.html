@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Home /home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"
+</head>
+<body>
+
+<table border="0">
+    <tr>
+        <td><h3 class="headline">Good Day</h3></td>
+        <td><p align="right">{{ ddate }}</p></td>
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <td><h2 class="news">Braunschweiger Nachrichten</h2>
+    <ul>
+    {% for items in feed_bsnews %}
+      {% if loop.index < 7 %}
+    <li> <a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+      {% endif %}
+       {% endfor %}
+    </ul>
+
+            <h2 class="news">Hacker News</h2>
+            <ul>{% for items in feed_hacknews %}
+      {% if loop.index < 7 %}
+            <li><a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+      {% endif %}
+            {% endfor %}</ul>
+
+            <h2 class="news">Tagesschau</h2>
+            <ul>{% for items in feed_tagesschau %}
+      {% if loop.index < 7 %}
+                <li><a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+      {% endif %}
+       {% endfor %}</ul>
+
+        </td>
+        <td width="15%"><h5>Wetter</h5><p>
+        <p class="temp">{{ actual_temperature }} °C</p>
+        <p>rel. Luftfeuchte: {{ act_humidity}} %<br />
+        Luftdruck: {{ act_pressure }} hPa<br />
+            min. Temp: {{ min_temp_today }} °C<br />
+            max. Temp: {{ max_temp_today }} °C<br />
+            Wind: {{ windspeed }} km/h aus {{ wind_h }}
+        </p>
+        <p>   • {{ sunriset }} Uhr,• {{ sunsett }} Uhr</p><br />
+        <p>Aktualisierung: {{nowtime }}:00 Uhr</p></td>
+
+</tr>
+</table>
+
+</body>
+</html>
