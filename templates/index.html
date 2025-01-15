@@ -18,24 +18,24 @@
     <tr>
         <td><h2 class="news">Braunschweiger Nachrichten</h2>
     <ul>
-    {% for items in feed_bsnews %}
+    {% for items in feed_firstfeed %}
       {% if loop.index < 7 %}
-    <li> <a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+    <li> <a href="{{ items['link'] }}" target="_blank">{{ items['title'] }}</a></li>
       {% endif %}
        {% endfor %}
     </ul>
 
             <h2 class="news">Hacker News</h2>
-            <ul>{% for items in feed_hacknews %}
+            <ul>{% for items in feed_secfeed %}
       {% if loop.index < 7 %}
-            <li><a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+            <li><a href="{{ items['link'] }}" target="_blank">{{ items['title'] }}</a></li>
       {% endif %}
             {% endfor %}</ul>
 
             <h2 class="news">Tagesschau</h2>
-            <ul>{% for items in feed_tagesschau %}
+            <ul>{% for items in feed_thirdfeed %}
       {% if loop.index < 7 %}
-                <li><a href="{{ items['link'] }}">{{ items['title'] }}</a></li>
+                <li><a href="{{ items['link'] }}" target="_blank">{{ items['title'] }}</a></li>
       {% endif %}
        {% endfor %}</ul>
 
