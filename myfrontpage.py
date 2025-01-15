@@ -5,9 +5,9 @@ import json
 import feedparser
 app = Flask(__name__)
 
-bnurl = "https://www.braunschweiger-zeitung.de/rss"  #Braunschweiger Zeitung
-haqurl = "https://hnrss.org/frontpage"  #Hacker News
-tagesurl = "https://www.tagesschau.de/index~rss2.xml"  # #Tagesschau
+firsturl = "https://www.braunschweiger-zeitung.de/rss"  #Braunschweiger Zeitung
+securl = "https://hnrss.org/frontpage"  #Hacker News
+thirdurl = "https://www.tagesschau.de/index~rss2.xml"  # #Tagesschau
 
 ddate = datetime.now().strftime('%d.%m.%Y - %H:%M Uhr')
 
@@ -26,10 +26,10 @@ fcast1 = fcast['forecast1']
 
 unixt = int(fcast1['start'] / 1000)
 print(unixt)
-print(datetime.fromtimestamp(unixt).strftime('%d.%m.%Y, %H:%M:%S')) #stamp in ms
+print(datetime.fromtimestamp(unixt).strftime('%d.%m.%Y, %H:%M:%S'))  #stamp in ms
 
 
-nowtime = datetime.now().strftime('%H') #aktuelle Stunde für Temperatureintrag
+nowtime = datetime.now().strftime('%H')  #aktuelle Stunde für Temperatureintrag
 print(fcast1)
 
 print("MAIN:",fcast1['temperature'][int(nowtime)])
@@ -38,7 +38,7 @@ print("MAIN:",fcast1['temperature'][int(nowtime)])
 actual_temperature = (fcast1['temperature'][int(nowtime)]) / 10
 act_pressure = int(fcast1['surfacePressure'][int(nowtime)] / 10)
 act_humidity = fcast1['humidity'][int(nowtime)] / 10
-act_dewpoint = fcast1['dewPoint2m'][int(nowtime)] / 10 #nicht angezeigt
+act_dewpoint = fcast1['dewPoint2m'][int(nowtime)] / 10  #nicht angezeigt
 
 min_temp_today = fcast['days'][0]['temperatureMin'] / 10
 max_temp_today = fcast['days'][0]['temperatureMax'] / 10
@@ -86,9 +86,9 @@ else:
 
 @app.route('/')
 def index():
-    feed_bsnews = (feeder(bnurl))
-    feed_hacknews = (feeder(haqurl))
-    feed_tagesschau = (feeder(tagesurl))
+    feed_bsnews = (feeder(firsturl))
+    feed_hacknews = (feeder(securl))
+    feed_tagesschau = (feeder(thirdurl))
 
     return render_template('index.html', actual_temperature=actual_temperature, act_pressure=act_pressure,
                           act_humidity=act_humidity, min_temp_today=min_temp_today,
